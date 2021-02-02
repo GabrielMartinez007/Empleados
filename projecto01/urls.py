@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
+
 def hello(self):
     print("Hola mundo desde un error en Django")
 
@@ -31,4 +33,4 @@ urlpatterns = [
     re_path('', include('applications.departamento.urls')),
     re_path('', include('applications.persona.urls')),
     re_path('', include('applications.home.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
