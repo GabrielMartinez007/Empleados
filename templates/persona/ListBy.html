@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}Departamentos{% endblock title %}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+  <br>
+  <h1 class="cell">Empleados del departamento.</h1>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th width="100">ID</th>
+        <th width="150">Nombre</th>
+        <th width="150">Apellido</th>
+        <th width="150">Departamento</th>
+        <th width="150">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for e in departamento%}
+      <tr>
+        <td>{{e.id}}</td>
+        <td>{{e.first_Name}}</td>
+        <td>{{e.last_Name}}</td>
+        <td>{{e.department}}</td>
+        <td>
+          <a class="hollow button alert" href="{%url 'persona_app:listarArea'}">Eliminar</a>
+          <a class="hollow button" href="{%url 'persona_app:listarArea'}">Editar</a>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}

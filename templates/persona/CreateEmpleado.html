@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Crear Empleado
+{% endblock title %}
+
+{%block content%}
+{%include "includes/header.html"%}
+
+<div class="grid-container">
+  <br>
+  <h2>Rellene los campos con la informacion pertinente.</h2>
+  <form method="post" enctype="multipart/form-data" > {% csrf_token %}
+
+  {{ form.as_p }}
+  <button class="success button" style="color:#ffffff" type="submit">Agregar</button>
+
+  </form>
+</div>
+
+
+{%endblock content%}

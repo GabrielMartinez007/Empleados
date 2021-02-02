@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Departamentos{% endblock title %}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+  <h1 class="cell large-6">Departamentos de la empresa.</h1>
+  <br>
+  <div class="cell">
+    <table>
+      <tbody>
+        {%for e in dep%}
+        <tr>
+          <td>{{e.name}}</td>
+          <td>{{e.short_name}}</td>
+          <td><a class="hollow button success" href="{%url 'persona_app:listarArea' e.short_name%}">Ver empleados</a></td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock content %}

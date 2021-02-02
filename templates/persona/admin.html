@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block content%}
+{%include "includes/header.html"%}
+
+<div class="grid-container">
+  <div class="grid-x">
+    <h1 class="cell">Buscar empleado</h1>
+    <form method="get" class="cell grid-x grid-margin-x">{%csrf_token%}
+      <div class="cell large-8">
+          <input type="text" name="key" id="key" placeholder="Empleado">
+      </div>
+      <div class="cell large-4">
+          <button type="submit" class="success button" style="color: #ffffff">Buscar</button>
+          <a type="submit" class="primary button" style="color: #ffffff" href="{% url 'persona_app:crear'%}" >Añadir nuevo empleado</a>
+      </div>
+    </form>
+    <div class="cell">
+      <table>
+        <thead>
+          <tr>
+            <th width="70">ID</th>
+            <th>Nombres</th>
+            <th width="150">Apellidos</th>
+            <th width="150">Departamento</th>
+            <th width="150">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for e in object_list %}
+          <tr>
+            <td>{{e.id}}</td>
+            <td>{{e.first_Name}}</td>
+            <td>{{e.last_Name}}</td>
+            <td>{{e.department}}</td>
+            <td>
+              <a class="hollow button alert" href="{%url 'persona_app:eliminado' e.id%}">Eliminar</a>
+              <a class="hollow button" href="{%url 'persona_app:update' e.id%}">Editar</a>
+              <a class="hollow button success" href="{%url 'persona_app:detalleEmpleado' e.id%}">Ver</a>
+            </td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="cell">
+    {% if is_paginated %}
+    <nav aria-label="Pagination">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="pagination-previous">
+          <a href="?page={{page_obj.previous_page_number}}">Atras</a>
+        </li>
+        {% endif %}
+
+        {% for pagina in paginator.page_range %}
+
+        {% ifequal pagina page_obj.number %}
+        <li class="current"><span class="show-for-sr">You're on page</span>{{pagina}}</li>
+        {% else %}
+        <li><a href="?page={{pagina}}">{{pagina}}</a></li>
+        {% endifequal %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li class="pagination-next">
+          <a href="?page={{page_obj.next_page_number}}">Siguiente</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+  </div>
+</div>
+
+{%endblock content%}

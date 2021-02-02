@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+{%include "includes/header.html"%}
+
+<br>
+<form class="grid-container" method="POST">{%csrf_token%}
+  <h2>Confirmacion.</h2>
+    <br>
+  <div class="callout alert cell large-4">
+    <h5>¿Seguro que desea eliminar este empleado?</h5>
+    <p>Si pulso el boton eliminar, tenga en cuenta que nunca mas podra recuperar los datos de este empleado.</p>
+    <p>Eliminar empleado:</p>
+    <p><button type="submit" class="button alert">Eliminar</button></p>
+  </div>
+</form>
+
+
+{% endblock content %}

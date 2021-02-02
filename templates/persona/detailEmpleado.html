@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static%}
+
+
+
+
+{% block content %}
+{%include "includes/header.html"%}
+
+<div class="grid-container grid-x">
+  <h2>Datos de los empleados</h2>
+  <br>
+  <br>
+  <br>
+  <div class="cell large 4">
+    <div class="media-object">
+      <div class="media-object-section">
+        <div class="thumbnail">
+          {% if empleado.avatar %}
+              <img src="{{ empleado.avatar.url}}">
+          {% else %}
+              <img src="{% static 'img/avatar.png' %}">
+          {% endif %}
+        </div>
+      </div>
+      <div class="media-object-section">
+        <h2>{{ empleado.full_Name }}</h2>
+        <div class="grid-x grid-margin-x">
+          <p class="cell large-12">Departamento: {{ empleado.department }}</p>
+          <div class="cell">
+            <p class="cell">Habilidades:</p>
+            {%for h in empleado.Habilidades.all%}
+              <span class="label">{{h}}</span>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<div class="grid-container">
+  <div class="callout primary cell large-4">
+    <h5>Informacion</h5>
+    <p>Para volver a la lista de empleados, click <a href="{% url 'persona_app:Lista' %}">Aqui.</a></p>
+  </div>
+</div>
+
+
+
+{% endblock content %}

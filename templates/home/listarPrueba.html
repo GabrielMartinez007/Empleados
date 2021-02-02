@@ -1,0 +1,16 @@
+<h1>ListarPrueba</h1>
+
+<!-- los template tags en django son partes de codigo python dentro de la template, el de abajo es un tag de iteracion-->
+<!-- los tags de django son "dos llaves", sirven para referenciar "variables", dentro de los tags en general el html
+ siempre funciona -->
+
+{% for i in list%}
+    <p>
+        <!-- para hacer referencia a solo una sola columna del registro a que hacemos referencia en este caso se puede
+        usar la regla del "." despues de la "Variable" y luego nombrar al nombre de la columna que queremos referenciar -->
+
+        {{ i.titulo }}
+    </p>
+
+{% endfor %}
+

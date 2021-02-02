@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+{%include "includes/header.html"%}
+
+<br>
+<form class="grid-container" method="POST">{%csrf_token%}
+  <h2>Eliminacion completa.</h2>
+    <br>
+  <div class="callout success cell large-4">
+    <h5>El empleado ha sido eliminado correctamente!</h5>
+    <p>Para volver al menu de administrador solo click a "Regresar".</p>
+    <p>Regresar:</p>
+    <p><a class="button primary" style="color: #ffffff" href="{% url 'persona_app:Lista' %}">Listar</a></p>
+  </div>
+</form>
+
+
+{% endblock content %}

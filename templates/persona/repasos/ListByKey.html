@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar por clave</title>
+</head>
+<body>
+<h1>Listar por clave</h1>
+
+<!-- para crear un formulario con html, hay que usar una etiqueta de tipo form, se le pasa por parametro "method="GET"
+luego se le pasa el token de seguridad-->
+
+<form method="GET">{% csrf_token %}
+    <!-- la etiqueta html input crea un textbox, el mismo recibe un parametro "type" el cual recibira el tipo de datos
+    un parametro "id" el cual recibira el nombre clave del input, un parametro "name" que sera el nombre del input y un
+    placeholder" -->
+
+    <input type="text" id="kword" name="kword" placeholder="Ingrese su palabra clave">
+    <button type="submit">Buscar</button>
+</form>
+<ul>
+    {% for e in object_list %}
+        <li>
+            {{e}}
+        </li>
+    {%endfor%}
+
+</ul>
+
+</body>
+</html>

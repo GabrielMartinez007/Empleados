@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar habilidades</title>
+    <h1>Buscar habilidades por empleado</h1>
+</head>
+<body>
+<form method="get">{% csrf_token %}
+
+    <input type="text" id="habilidad" name="habilidad" placeholder="Ingrese el id del empleado">
+    <button type="submit">Buscar</button>
+
+    <ul>
+        {% for e in Habs %}
+        <li>
+            {{e}}
+        </li>
+        {% endfor %}
+
+    </ul>
+
+
+</form>
+
+</body>
+</html>
